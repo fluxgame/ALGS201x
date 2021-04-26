@@ -1,6 +1,7 @@
 # python3
 
 from collections import namedtuple
+import argparse
 
 Bracket = namedtuple("Bracket", ["char", "position"])
 
@@ -38,6 +39,11 @@ def test():
             print(f"FAILED: expected: {expected}, got: {result}")
 
 if __name__ == "__main__":
-#    test()
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--test", help="run unit tests", action="store_true")
+    args = parser.parse_args()
+    if args.test:
+        test()
+    else:
+        main()
 
